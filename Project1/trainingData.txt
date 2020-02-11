@@ -1,2 +1,7 @@
 this is a test string 0
 this is a second test string 1
+another test string with more words 1
+to use this do not be CS 0
+second to use should not be CS 0
+more second test will be CS 1
+this test has even more CS 1
