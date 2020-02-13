@@ -12,7 +12,9 @@ def getTrainingProbability(trainingResults):
     for i in range(len(trainingResults[0]) - 1):
         probList[0].append(0)
         probList[1].append(0)
-        
+
+    #Counts the number of 1 and 0 classifications from passed data
+    #Used to calculate probability of both values across all data.
     countYes = 0
     countNo = 0
     for index, line in enumerate(trainingResults):
@@ -24,40 +26,64 @@ def getTrainingProbability(trainingResults):
             probLine = 1
         for inIndex, element in enumerate(line[:-1]):
             probList[probLine][inIndex] += element
-            
+
+    #Calculates probability that each keyword exists in each classification
+    #Probabilities are separated based on 1 and 0 classification
     for index, line in enumerate(probList):
         for inIndex, element in enumerate(line):
             if index is 0:
                 line[inIndex] /= countYes
             else:
                 line[inIndex] /= countNo
+
+    #Adds the final probability that a randomly selected line will
+    #be classified as either 1 or 0
     probList[0].append([countYes / (countYes + countNo)])
     probList[1].append([countNo / (countYes + countNo)])
     return probList
 
-#
+#Calculates required parts of probability that a given line
+#is either 0 or 1 (CS or not CS in this project, but usable outside of it)
+#Appends the expected classification to the list containing the
+#actual classification of the line.
 def getSingleTestResult(probList, testLine):
+    #Final probability will always include P(y=1) or P(y=0), so start with them
     probYes = probList[0][-1][0]
     probNo = probList[1][-1][0]
-    probLine = 1 - testLine[-1][0]
-    for index, element in testLine:
+    #Iterates through list, multiplying probabilities by given y=1 and y=0
+    #respectively. Index is aligned with keyword values.
+    for index, element in enumerate(testLine):
         if element is 1:
-            probYes *= probList[probLine][index]
-        else:
-            probNo *= 1 - probList[probLine][index]
-    if probYes > probNo:
-        testLine[-1].extend(1)
-    else:
-        testLine[-1].extend(0)
+            probYes *= probList[0][index]
+            probNo *= probList[1][index]
+        elif element is 0:
+            probYes *= 1 - probList[0][index]
+            probNo *= 1 - probList[1][index]
 
-#
+    #Compares final probabilities of both classifications. While not
+    #true probabilities, the ratios are the same and they may be
+    #compared safely.
+    if probYes > probNo:
+        testLine[-1].append(1)
+    else:
+        testLine[-1].append(0)
+
+#Passed both the training and test data indicating presence of
+#keywords in each line, expecting the final values of both
+#to be a list containing only the actual classification
+#Will modify the test data to append both the predicted classification
+#and the error value to the list containing actual classification
 def getTestResults(training, test):
     probList = getTrainingProbability(training)
-    for index, line in enumerate(test):
-        #Get expected result
-        tempExtend = 0
-        tempError = line[-1][0] - tempExtend
-        line[-1].extend([tempExtend, tempError])
+    count = 0
+    #Runs each line through getting expected classification and
+    #appends the error value
+    for line in test:
+        getSingleTestResult(probList, line)
+        result = 0
+        if line[-1][0] is not line[-1][1]:
+            result = 1
+        line[-1].append(result)
         
 
 #Stores the presence of keywords across all lines in training data
@@ -103,6 +129,18 @@ def storeKeywords(fileName, listName, warningLabel):
     except IOError:
         print("Unable to open " + fileName + ".")
 
+#Gets error rate on test data through error results added to test data
+def getErrorRate(test):
+    #Count the number of lines in test data and the number of found errors
+    errorCount = 0
+    totalCount = 0
+    for line in test:
+        totalCount += 1
+        errorCount += line[-1][-1]
+
+    #Returns the error rate
+    return errorCount / totalCount
+        
 trainingFileName = "trainingData.txt"
 testFileName = "testData.txt"
 keywordFileName = "keywords.txt"
@@ -117,8 +155,10 @@ pprint.pprint(trainingResults)
 #print(testResults)
 
 getTestResults(trainingResults, testResults)
-#print(testResults)
-
 tempList = getTrainingProbability(trainingResults)
 pprint.pprint(tempList)
+pprint.pprint(testResults)
+
+errorRate = getErrorRate(testResults)
+print(errorRate)
 
