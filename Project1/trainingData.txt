@@ -1,7 +1,220 @@
-this is a test string 0
-this is a second test string 1
-another test string with more words 1
-to use this do not be CS 0
-second to use should not be CS 0
-more second test will be CS 1
-this test has even more CS 1
+The field of artificial intelligence, or AI, goes further still: it attempts not just to 1
+Work started in earnest soon after World War II, and the name itself was coined 1
+AI currently encompasses a huge variety of subfields, ranging from general (learning and perception) to 1
+We will see that the concept of rationality can be applied to a wider variety 1
+The observation that some agents behave better than others leads naturally to the idea of 1
+An agent is anything that can be viewed as perceiving its environment through sensors and 1
+Goal-based agents, on the other hand, consider future action and the desirability of their outcomes 1
+Problem-solving agents use atomic representations, as described in Section 2.4.7 - that is, states of the 1
+Our discussion of problem solving begins with precisie definitions of problems and their solutions and 1
+We begin with a fairly simple case: Sections 4.1 and 4.2 cover algorithms that perform 1
+The key idea is that if an agent cannot predict exactly what percept it will 1
+Finally, Section 4.5 investigates online search, in which the agent is faced with a state 1
+In this chapter we cover competitive environments, in which the agents' goals are in conflict 1
+In AI, the most common games are of a rather specialized kind - what game theorists 1
+Games have engaged the intellectual faculties of humans - sometimes to an alarming degree - for as 1
+From the point of view of the search algorithm, however, each state is atomic, or 1
+We use a factored representation for each state: a set of variables, each of which 1
+CSP search algorithms take advantage of the structure of states and use general-purpose rather than 1
+They make strong claims about how the intelligence of humans is achieved - not by purely 1
+For example, the transition model for the 8-puzzle - knowledge of what the actions do - is 1
+Chapter 6 introduced the idea of representing states as assignments of values to variables; this 1
+Unfortunately, propositional logic is too puny a language to represent knowledge of complex environments in 1
+Our discussion motivates the development of first-order logic, a much more expressive language than the 1
+Programming languages (such as C++ or Java or Lisp) are by far the largest class 1
+Section 9.1 introduces inference rules for quantifiers and shows how to reduce first-order inference to 1
+We begin with some simple inference rules that can be applied to sentences with quantifiers 1
+Let us begin with universal quantifiers. Suppose our knowledge base contains the standard folkloric axiom 1
+In this chapter we introduce a representation for planning problems that scale up to problems 1
+Section 10.2 shows how forward and backward search algorithms can take advantage of this representation, 1
+This chapter covers fully observable, deterministic, static environments with single agents. Chapters 11 and 17 1
+This chapter shows how. Section 11.1 extends the classical language for planning to talk about 1
+For example, the planners of Chapter 10 could produce a schedule for an airline that 1
+The approach we take in this section is "plan first, schedule later": that is, we 1
+In this chapter we address the question of what content to put into such an 1
+Section 12.2 covers the basic categories of objects, substances, and measures; Section 12.3 covers events 1
+In "toy" domains, the choice of representation is not that important: many choices will work. 1
+An agent may never know for certain what state it's in or where it will 1
+Despite its many virtues, however, this approach has significant drawbracks when taken literally as a 1
+Suppose, for example, that an automated taxi has the goal of delivering a passenger to 1
+We define the syntax and semantics of these networks and show how they can be 1
+Furthermore, specifying probabilities for possible worlds one by one is unnatural and tedious. 1
+We also saw that independence and conditional independence relationships from among variables can greatly reduce 1
+From the belief state and a transition model, the agent can predict how the world 1
+The transition and sensor models may be uncertain: the transition model describes the probability distribution 1
+We have developed our techniques for probabilistic reasoning in the context of static worlds, in 1
+Such an agent can make decisions in contexts in which uncertainty and conflicting goals leave 1
+Section 16.2 shows that the behavior of any rational agent can be captured by supposing 1
+Decision theory, in its simplist form, deals with choosing among actions based on the desirability 1
+Sequential decision problems incorporate utilities, uncertainty, and sensing, and include search and planning problems 1
+In such environments, the notion of optimal behavior is complicated by the interactions among the 1
+Suppose that an agent is situated in the 4 x 3 environment shown in Figure 1
+In this chapter we will concentrate on one class of learning problem, which seems restricted 1
+If the design of the agent can be improved, why wouldn't the designers just program 1
+Any component of an agent can be improved by learning from data. The improvements, and 1
+To most users, a compiler can be viewed as a "black box" that performs the 1
+Compilers therefore allow programs and programming expertise to be machine-independent. This is a particularly valuable 1
+The term compiler was coined in the early 1950s by Grace Murray Hopper. Translation was 1
+It is an extremely simple language, lacking even enough features to write a useful program. 1
+The structure of this compiler is based on that illustrated in Figure 1.3. In the 1
+The definition of Micro tokens can be formalized, as we shall see in Chapter 3. 1
+The Micro scanner we saw in Chapter 2 was quite simple and could be easily 1
+At first glance this may seem unnecessary, given the sample token structure found in most 1
+A precise definition of tokens is obviously necessary to ensure that lexical rules are properly 1
+A context-free grammar (CFG) is defined by the following four components: 1
+The vocabulary V of a CFG is the set of terminal and nonterminal symbols (that 1
+Starting with S, nonterminals are rewritten using productions until only terminals remain (at which point 1
+We also define LL(1) parsers, which use an LL(1) parse table rather than recursive procedures 1
+They are also frequently used to automatically generate a parser. The idea here is to 1
+As we learned in Chapter 2, recursive descent parsers use parsing procedures to match the 1
+This is by no means trivial. More than one production may have the same right-hand 1
+The parse stack catenated with the remaining input always represents a right sentential form. Tokens 1
+The problem is to know when we have reached the end of the handle, then 1
+The semantic routines, the part of the compiler that interprets the meaning (semantics) of a 1
+Analysis is completed in that the semantic routines associate semantic information from declarations with all 1
+We begin our discussion of semantic processing by looking first at the most general approach 1
+A symbol table is a necessary component of a compiler because the definition of a 1
+This chapter is mainly concerned with implementation issues, but we first consider an abstract definition 1
+This interface provides an abstract view of a symbol table in that it doesn't specify 1
+Algol 60 and succeeding languages introduced features that required stack allocation, in which space is 1
+A data area is a block of storage for variables and other objects known to 1
+In many early languages, notably assembly languages and FORTRAN, all storage allocation is static. Space 1
+The second section outlines the semantic routines necessary to process a simple subset of the 1
+A "record" is the term used in Algol-derived languages for what C calls a "structure." 1
+In Chapter 8, symbol tables were presented as a means of associating names with some 1
+This record is complex, for it is used to describe literal constants, variables, components of 1
+They will be discussed in the appropriate sections of this chapter. 1
+The representation for data objects that we have chosen assumes that we want the front 1
+The statement types to be considered can be classified into three categories: looping structures, conditional 1
+A significant difference from the Pascal if statement is the use of the closing keywords 1
+The form of the tuples produced for if statements is shown in Figure 12.1. Two 1
+As is the case with any other declaration, the declaration of a subprogram results in 1
+Ada and Ada/CS include distinct syntactic forms for procedures and functions, and they allow either 1
+The semantic routines in these productions use one new semantic record type, SUBPROGRAM. An instance 1
+The semantic routines form the most crucial part of a compiler because they finish the 1
+The first section of this chapter is a details presentation of attribute grammars, which were 1
+Attribute grammars were proposed by Knuth (1968) as a means of including semantics with the 1
+Most importantly, the translation phase, incorporated into a compiler's semantic routines, is overwhelmingly source language-dependent 1
+This may seem facetious, but there are circumstances in which it is desirable to have 1
+A simple compiler might produce a tree-structured IR that can be interpreted by an execution 1
+For video game use by children, most parents – 71 percent – indicate that video games have 0
+In 2016, the video game industry sold more than 24.5 billion games – up from 23.2 0
+The top three best-selling video games of 2016 were Call of Duty: Infinite Warfare, Battlefield 0
+After all, Prodigy is a role-playing video game that encourages kids to practice math facts. 0
+This is potentially good news for students, as well as for the millions of people who 0
+“There is a lot of evidence that people — and not just young people — spend a 0
+The husband and wife, who are both in their 60s, visited two Hawaiian islands in 0
+Mr. Ige said the situation was of serious concern, but that the state was prepared 0
+The man fell ill during the second week of his vacation in Hawaii. At the 0
+Jones had amazing dunks, and he too scored a perfect 50 in the final round, 0
+Tacko told an ESPN reporter after the dunk that he was "scared for his life." 0
+Jones' final slam was an ode to Michael Jordan, who delivered one of the competition's 0
+In a television interview in September, Strauss-Kahn admitted that his liaison with Diallo was a 0
+On 1 July, prosecutors told the judge that they had reassessed the strength of their 0
+On 23 August 2011, the judge formally dismissed all charges following a recommendation for dismissal 0
+The book was described by the Social Affairs Unit as "a vigorous defence of the 0
+I want to first of all explain what neocons are and what they aren't ... what 0
+The book is divided into four parts: Neoconservatism in theory; Neoconservatism in Practice; Relativism and 0
+A graduate with honors of New York University's Tisch School of the Arts, Verrechia's movies 0
+Kids of the Majestic won the Artivist Award for Best Feature in Children's Advocacy Category 0
+Tijuana Makes Me Happy won the Grand Jury Prize for Best Narrative Feature at the 0
+Since 2003, OCCAM has been associated with the United Nations Department of Public Information, while 0
+OCCAM was founded with the mission to fight poverty as effectively as possible using the 0
+OCCAM's actions, besides its function of Observatory on Digital Communication with studies and research, focuses 0
+The Commission reviews complaints and subjects of interests in the financing and campaigning of political 0
+It is ordinance 2006-OR-36 in the city records and contains eighteen pages and seven articles. 0
+The Municipal Campaign Finance Code would become amended with an ordinance numbering 2007-OR-56 in city 0
+In 1967, the airline entered a co-operation with United Arab Airlines, which lasted until 1972. 0
+At March 1975 YAC had 60 employees; the airline's fleet consisted of four DC-6Bs and 0
+At July 1980 the workforce was 750 and chairmanship was held by Shaif M. Saeed. By 0
+Eventually, other schools in the area began to request performances. These small cafeteria performances grew 0
+After a few months after its launch, the song reached number one on Colombia's national 0
+Soon after, the group recorded a new single entitled "Bien Cerquita", which features Dominican artist 0
+For a more conventional President, that might mean putting the spectacle of impeachment behind him 0
+And he has long believed the federal government — and the outer orbit of the White 0
+Trump has launched a season of getting even, lashing out at those who spoke out 0
+The jump in new cases—more than 14,800 in the province at the epicenter of 0
+Confirmed cases will now be based on clinical diagnosis, including the use of CT scans. 0
+“In terms of monitoring the progression of the outbreak of infections, it’s quite a sensible 0
+On February 7, a crucial witness in the House Impeachment Inquiry last fall, Lt. Col. 0
+Transferring Vindman so soon after the President’s impeachment acquittal was "overt retaliation," says Stephen Kohn, 0
+Global panic over the novel coronavirus prompted Japan, the Philippines, Taiwan, Thailand, and the U.S. 0
+From there, the passengers will be flown home at the cruise line’s expense. 0
+The Westerdam was the latest cruise ship to be caught in the middle of the 0
+Biden advisers spent much of Wednesday on the phone with donors and supporters, seeking to 0
+Biden’s allies sought to calm fears by noting that Bill Clinton was one-for-11 in the 0
+Biden allies say the plan has always been to grind out wins over a long 0
+Chen Qiushi looked haggard and disheveled in his online posts, an almost unrecognizable shadow of 0
+Armed with smart phones and social media accounts, these citizen-journalists are telling their stories and 0
+These are also the four groupings that Myers seems to have had in mind when 0
+Myers completed her book The Myers-Briggs Type Indicator in 1958 and published it in 0
+I soon found it convenient and useful to partition Myer's sixteen types into four groups, 0
+And so, for forty more adventurous, creative years, Hemingway boxed, he ran with the bulls 0
+Reborn in the spring of every year, Dionysus would return from the underworld to release 0
+In recent years I have come to think of the Dionysians as fox-like. There have 0
+Further, he had to avoid engaging the British in open battle, or if he did 0
+He also saw it as his duty to oversee the United States of America's ascent 0
+In the mid 1970s I referred to Myer's SJs as "Epimetheans," after Epimetheus, the Greek 0
+How could one slight, soft-spoken man accomplish such an incredible feat? The answer must wait 0
+It was not in Gandhi's nature to undertake military operations in any form. Gandhi's interests 0
+Gandhi's objective was political freedom for India, and yet, for all his social activism, he 0
+From 1905 to 1925, Einstein not only conceived the theory of relativity, but he made 0
+Rejected by academia, Einstein went his own way and took a job at the Swiss 0
+Professorships at leading universities soon came his way, and as his fame grew so did 0
+For some, there are obligations of social class to satisfy, family expectations to consider, or 0
+Given a number of choices determined by all the other factors - national origin, social background 0
+After all, what do we mean when we say that a person is, or is 0
+Even more than the husband-wife relationship, the parent-child relationship has this serious factor of interpersonal 0
+But the temperament hypothesis suggests that, in many cases, children are fundamentally different from their 0
+How then are we to take up the task of parenting? We dare not make 0
+Equally brilliant leaders, but brilliant in radically different ways. 0
+Except for a large measure of kindness and great physical strength, these two men had 0
+Why would these four men - Churchill, Gandhi, Washington, and Lincoln - go about leading their people 0
+The hallway smelt of boiled cabbage and old rag mats. At one end of it 0
+The voice came from an oblong metal plaque like a dulled mirror which formed part 0
+Outside, even through the shut window pane, the world looked cold. Down in the street 0
+As she came nearer he saw that her right arm was in a sling, not 0
+A sharp cry of pain was wrung out of her. She must have fallen right 0
+A curious emotion stirred in Winston's heart. In front of him was an enemy who 0
+A bench, or shelf, just wide enough to sit on ran around the wall, broken 0
+It had been there ever since they had bundled him into the closed van and 0
+He sat as still as he could on the narrow bench, with his hands crossed 0
+Once back in the U.S., passengers from the cruise ship will be forced to undergo 0
+They will be taking the State Department's charter plane and said they are "excited and 0
+"We just didn't think this quarantine is a valid quarantine, and we felt it would 0
+He scribbled last-minute notes in a homemade booklet, a Christmas present from his daughter. On 0
+"We're absolutely not a paramilitary," he said. "We're a nonprofit corporation." 0
+To Marshall, "militia" conjures images of wannabes in the woods with guns – all bluster, no 0
+After wrapping up his book about the potential therapeutic benefits of psychedelic drugs, author Michael 0
+"There are studies that show that people's both mental performance and athletic performance are improved 0
+It was only when he quit caffeine cold turkey that Pollan fully appreciated the mental 0
+Zinc has an interesting back story. It wasn't even acknowledged as an essential mineral for 0
+Prasad wondered if the problem might be a lack of zinc. 0
+"I couldn't believe it," he says. Prasad had never expected such significant growth. 0
+The coughing and crying means that not only do they not sleep, but you also 0
+When you get there, there might be dozens of bottles of cough syrup promising to 0
+Shu, a spokesperson for the American Academy of Pediatrics, says the shelves of kids' cough 0
+Or it could be that in our divided times, uniting over something as indisputable as 0
+Palindrome derives from the Greek word for running back again, and defines a number, word 0
+Palindromic dates have long been viewed as carrying special significance and even spirituality. Adding to 0
+Megan had dyslexia, and "Cher" offered encouragement when she struggled to read in school. 0
+In some ways, they are akin to the imaginary friends that many children have. As 0
+This week, we look at the human capacity for imagination, and meet people who have 0
+There was a person — or many people — who spotted a looming crisis and tried to 0
+After a disaster happens, we want to know, could something have been done to avoid 0
+We'll travel 40 feet below the ground to talk to a modern-day Cassandra, and we'll 0
+Secretary of Defense Mark Esper spoke Saturday about a newly reached deal between the U.S. 0
+A concrete date for when the deal will begin is yet to be determined amid 0
+The next step would involve the signing of an agreement between the U.S and the 0
+Sudan says it has signed a deal to settle claims related to the bombing of 0
+"Sudan has also said it will pay the victims of the 1998 U.S. Embassy bombings 0
+It also says any possible ties to the USS Cole attack occurred under the old regime 0
+They've used snowplows, barrels and wooden barricades to block the tracks, forcing Canadian National Railway 0
+The blockades went up last week after the Royal Canadian Mounted Police tried to enforce 0
+"We recognize the important democratic right — and will always defend it — of peaceful protest," Trudeau 0
+A Pentagon statement about the injuries did not include details about the service members, such 0
+Nearly a week later, the Pentagon said 50 personnel were injured, only to revise the 0
+Milley has also said the military will take good care of the service members who 0
+"Surge capacity in the health care system is something that we think a lot about 0
+Public health officials have repeatedly cautioned that there are currently no signs of community transmission. 0
+Greene says plans are in place to address this issue. "One of the ways we 0

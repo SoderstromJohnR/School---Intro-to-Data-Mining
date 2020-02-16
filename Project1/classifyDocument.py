@@ -1,5 +1,5 @@
 
-import pprint
+from pprint import pprint as pp
 
 #Returns a list of probabilities for each keyword given a numeric list
 #The first interior list contains probabilities of each keyword when the
@@ -31,10 +31,18 @@ def getTrainingProbability(trainingResults):
     #Probabilities are separated based on 1 and 0 classification
     for index, line in enumerate(probList):
         for inIndex, element in enumerate(line):
-            if index is 0:
-                line[inIndex] /= countYes
+            #Check a need for smoothing
+            if probList[0][inIndex] is 0 or probList[1][inIndex] is 0:
+                if index is 0:
+                    line[inIndex] = (element + 1) / (countYes + 2)
+                else:
+                    line[inIndex] = (element + 1) / (countNo + 2)
+            #Don't apply smoothing if both entries have something already
             else:
-                line[inIndex] /= countNo
+                if index is 0:
+                    line[inIndex] /= countYes
+                else:
+                    line[inIndex] /= countNo
 
     #Adds the final probability that a randomly selected line will
     #be classified as either 1 or 0
@@ -85,19 +93,56 @@ def getTestResults(training, test):
             result = 1
         line[-1].append(result)
         
+#Cleans a string for learning, removing non-alphanumeric characters
+#and changing case to lower.
+def cleanString(string):
+    string = string.lower()
+    firstIndex = 0
+    secondIndex = 0
+    newString = ""
+    for char in string:
+        if not (char.isalnum() or ord(char) is 32):
+            newString += string[firstIndex:secondIndex]
+            firstIndex = secondIndex + 1
+        secondIndex += 1
+    return newString
 
+#Use for deciding keywords, modifies a dictionary to contain each
+#word in the training data with a count, ignoring classification
+def potentialKeywords(keywordDict, line):
+    tempLine = line.split(' ')
+    for word in tempLine:
+        if word in keywordDict:
+            keywordDict[word] += 1
+        else:
+            keywordDict[word] = 1
+
+#Includes two lines to uncomment to generate word counts for potential
+#keywords.
 #Stores the presence of keywords across all lines in training data
 #with labels. Returns a list aligned with the keywords list passed in.
 def storeResults(fileName, keywords, warningLabel):
     try:
         with open(fileName) as inFile:
+            #Uncomment to store potential keywords
+##            potentialKey = {}
             results = []
             #Splits input lines one by one and scans for presence of keywords
             #Appends class label after scanning of a line is complete
             for line in inFile:
+                #I was getting strange behavior and could not get it
+                #to stop without adding this if statement
+                if line[-1] is not '\n':
+                    line += '\n'
+                line = cleanString(line)
                 checkLine = line.rstrip('\n').rsplit(' ', 1)
+                #Uncomment to add potential keywords to dictionary
+##                potentialKeywords(potentialKey, checkLine[0])
                 results.append(testLineKeywords(checkLine[0], keywords))
                 results[-1].append([int(checkLine[1])])
+            #Uncomment to print potential keyword dictionary
+##            pp([(k, v) for k, v in sorted(potentialKey.items(),
+##                                          key=lambda x: x[1], reverse=True)])
             return results
     except IOError:
         print("Unable to open " + fileName + ".")
@@ -150,15 +195,25 @@ storeKeywords(keywordFileName, keywords, "Keyword Data")
 trainingResults = storeResults(trainingFileName, keywords, "Training Data")
 testResults = storeResults(testFileName, keywords, "Test Data")
 
-print(keywords)
-pprint.pprint(trainingResults)
+#print(keywords)
+#pp(trainingResults)
 #print(testResults)
 
 getTestResults(trainingResults, testResults)
 tempList = getTrainingProbability(trainingResults)
-pprint.pprint(tempList)
-pprint.pprint(testResults)
+#pp(tempList)
+#pp(testResults)
+for test in testResults:
+    pp(test[-1])
 
 errorRate = getErrorRate(testResults)
+print(errorRate)
+
+altTrainingResults = storeResults(trainingFileName, keywords, "Training Data")
+getTestResults(trainingResults, altTrainingResults)
+errorRate = getErrorRate(altTrainingResults)
+for test in altTrainingResults:
+    pp(test[-1])
+
 print(errorRate)
 
