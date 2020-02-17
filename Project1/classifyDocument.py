@@ -162,15 +162,16 @@ def testLineKeywords(line, keywords):
 
 #Stores a list of keywords based on an input file
 #Expects each keyword on its own line
-def storeKeywords(fileName, listName, warningLabel):
+#Returns a list of keywords
+def storeKeywords(fileName, warningLabel):
     try:
+        keywords = []
         with open(fileName) as inFile:
             for line in inFile:
-                listName.append(line.rstrip('\n'))
-            if not listName:
+                keywords.append(line.rstrip('\n'))
+            if not keywords:
                 print("Warning: " + warningLabel + " is empty.")
-            else:
-                listName = list().append(listName)
+        return keywords
     except IOError:
         print("Unable to open " + fileName + ".")
 
@@ -185,35 +186,45 @@ def getErrorRate(test):
 
     #Returns the error rate
     return errorCount / totalCount
-        
+
+#Print statement numbers with actual and expected classification
+def printResults(testResults, label1, label0):
+    count = 1
+    for line in testResults:
+        if line[-1][0] is 1:
+            actLabel = label1
+        else:
+            actLabel = label0
+        if line[-1][1] is 1:
+            expLabel = label1
+        else:
+            expLabel = label0
+        print("Statement #{}".format(count))
+        print("Expected Classification: {}".format(expLabel))
+        print("Actual Classification: {}".format(actLabel))
+        if actLabel is expLabel:
+            print("No error\n")
+        else:
+            print("Error\n")
+        count += 1
+
+#Set initial filenames
 trainingFileName = "trainingData.txt"
 testFileName = "testData.txt"
 keywordFileName = "keywords.txt"
-keywords = []
 
-storeKeywords(keywordFileName, keywords, "Keyword Data")
+#Store data for testing, keywords and training data
+keywords = storeKeywords(keywordFileName, "Keyword Data")
 trainingResults = storeResults(trainingFileName, keywords, "Training Data")
+
+#Store test data related to keywords and get results
 testResults = storeResults(testFileName, keywords, "Test Data")
-
-#print(keywords)
-#pp(trainingResults)
-#print(testResults)
-
 getTestResults(trainingResults, testResults)
-tempList = getTrainingProbability(trainingResults)
-#pp(tempList)
-#pp(testResults)
-for test in testResults:
-    pp(test[-1])
+printResults(testResults, "CS material", "Non-CS material")
 
-errorRate = getErrorRate(testResults)
-print(errorRate)
-
+#Run training data as test and get the error rate
 altTrainingResults = storeResults(trainingFileName, keywords, "Training Data")
 getTestResults(trainingResults, altTrainingResults)
 errorRate = getErrorRate(altTrainingResults)
-for test in altTrainingResults:
-    pp(test[-1])
-
 print(errorRate)
 
