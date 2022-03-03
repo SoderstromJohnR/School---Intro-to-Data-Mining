@@ -1,4 +1,6 @@
-# Taken from final report
+# Binary Document Classification
+
+## Taken from final report for class
 Over 200 statements were selected. No more than 3 came from a single chapter, or from the full source in case of smaller sources. Before selecting any statements, I decided to start from the third sentence of the first paragraph, the second sentence of the second paragraph, and the first sentence of the third paragraph where possible. I ended each selection at 15 words or the end of the paragraph, whichever came first. This was not always possible, particularly when selecting data from non-CS sources.
 
 99 statements were selected from CS sources: an AI textbook and a compilers textbook. More diverse statements could have been selected from CS material covering different topics. Statements from other CS material may also not be classified correctly as often.
