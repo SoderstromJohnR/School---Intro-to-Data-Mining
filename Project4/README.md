@@ -1,4 +1,10 @@
 # K Cluster Classification
+Generate a given number of random 2 dimensional points and place them into k classifications (4 and 2 in the output below) based on distance from a cluster center.
+
+After all points are generated, select k points randomly as centroids. Then repeat the following steps until no further changes occur.
+
+1. Classify all points based on euclidean distance, taking the closest centroid.
+2. Adjust centroids (not the points they were originally based on) to a new location to the average of all x and y values of points in their cluster.
 
 ## Taken from final report for class
 The starting seed is 95. Other tested seeds are: 50, 24, 127, 421, 379, 879, 801, 699, 555, and 333.
