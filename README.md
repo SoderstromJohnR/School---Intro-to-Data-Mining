@@ -1,2 +1,3 @@
-# CS-4342
-Intro to Data Mining Class Work
+# Intro to Data Mining - CS 4342
+
+
