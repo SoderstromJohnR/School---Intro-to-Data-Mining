@@ -11,9 +11,11 @@ TSSE decreased in every case. TSE decreased in all but one case; during seed 333
 
 ### Output
 
-Iteration # | Clust#1 | | Clust#2 | | Clust#3 | | Clust#4 | | TSSE (sq-dist) | TSE (dist) 
-             	Intra-sq-dist Intra-dist Intra-sq-dist Intra-dist Intra-sq-dist Intra-dist Intra-sq-dist Intra-dist 
-1            	11929.74     471.45     101.3           14.23       292.02         32.55      20059.25      598.84     32382.3         1117.08    
+| Iteration # |	Clust#1       |            | Clust#2       |            | Clust#3       |            | Clust#4       |            | TSSE (sq-dist) | TSE (dist) |
+| ----------- |:-------------:|:----------:|:-------------:|:----------:|:-------------:|:----------:|:-------------:|:----------:|:--------------:| ----------:|
+|             |	Intra-sq-dist | Intra-dist | Intra-sq-dist | Intra-dist | Intra-sq-dist | Intra-dist | Intra-sq-dist | Intra-dist |                |            |
+| 1           | 11929.74      | 471.45     | 101.3         | 14.23      | 292.02        | 32.55      | 20059.25      | 598.84     | 32382.3        | 1117.08    |
+
 2           	7916.24       362.14     999.17         72.19       1198.2         61.89      16134.06      506.52     26247.67       1002.75    
 3            	5438.15       277.01     2026.69       128.14     1684.64       87.4        14966.32      471.31     24115.8         963.86     
 4            	5438.15       277.01     2147.5         133.29     2054.69       105.3      13842.04      436.45     23482.38       952.06     
